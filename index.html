@@ -61,8 +61,8 @@
     /* HERO */
     .hero {
       position: relative;
-      height: calc(100vh - 88px);
-      min-height: 540px;
+      height: calc(100vh - 200px);
+      min-height: 440px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -92,14 +92,15 @@
     }
     .hero-stamp {
       position: absolute;
-      top: -30px;
-      right: -120px;
-      width: 160px;
+      top: -80px;
+      right: -160px;
+      width: 220px;
       opacity: 0.92;
       pointer-events: none;
+      transform: rotate(8deg);
     }
     @media (max-width: 900px) {
-      .hero-stamp { right: -20px; width: 120px; top: -20px; }
+      .hero-stamp { right: -10px; width: 160px; top: -50px; }
     }
     @media (max-width: 600px) {
       .hero-stamp { display: none; }
