@@ -1015,8 +1015,8 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-eyebrow">Recravas · Vakantievastgoed in Frankrijk</p>
-      <h1>Jouw eigen plek in de Dordogne.<br>De droom die zichzelf betaalt.</h1>
-      <p class="hero-sub">Twee bewezen parken in de Dordogne. Volledig ontzorgd. Verhuur via FranceComfort — elk jaar opnieuw.</p>
+      <h1 id="ab-headline">Jouw eigen plek in de Dordogne.<br>De droom die zichzelf betaalt.</h1>
+      <p class="hero-sub" id="ab-sub">Twee bewezen parken in de Dordogne. Volledig ontzorgd. Verhuur via FranceComfort — elk jaar opnieuw.</p>
       <a href="#aanvragen" class="btn-gold">Ontvang de gratis brochure</a>
       <p class="hero-microcopy">Geen verplichtingen · Antwoord binnen 24 uur · Nederlandstalig van A tot Z</p>
     </div>
@@ -1765,5 +1765,30 @@
     </div>
   </footer>
 
+  <script>
+    /* A/B SPLIT TEST — HERO HEADLINE
+       Variant A (controle): "Jouw eigen plek in de Dordogne. De droom die zichzelf betaalt."
+       Variant B (test):     "Frans vakantievastgoed dat zichzelf terugverdient — volledig begeleid, in het Nederlands."
+       Toewijzing: 50/50 random, opgeslagen in sessionStorage zodat de bezoeker consistent dezelfde variant ziet.
+       Tracking: window.abVariant = 'A' of 'B' — koppel aan GTM dataLayer wanneer GTM live gaat.
+    */
+    (function() {
+      var variant = sessionStorage.getItem('ab_hero');
+      if (!variant) {
+        variant = Math.random() < 0.5 ? 'A' : 'B';
+        sessionStorage.setItem('ab_hero', variant);
+      }
+      window.abVariant = variant;
+      if (variant === 'B') {
+        var h1 = document.getElementById('ab-headline');
+        var sub = document.getElementById('ab-sub');
+        if (h1) h1.innerHTML = 'Frans vakantievastgoed dat zichzelf terugverdient —<br>volledig begeleid, in het Nederlands.';
+        if (sub) sub.innerHTML = 'Door de Franse belastingstructuur heb je tot wel 2% minder rendement nodig om netto hetzelfde te realiseren als een vergelijkbare investering in Nederland.';
+      }
+      // GTM dataLayer push — activeert zodra GTM is gekoppeld
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'ab_hero', ab_variant: variant });
+    })();
+  </script>
 </body>
 </html>
