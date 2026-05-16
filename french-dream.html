@@ -58,6 +58,17 @@
       letter-spacing: 0.01em;
     }
 
+    .nav-phone {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.875rem;
+      text-decoration: none;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-phone { display: none; }
+    }
+
     /* HERO */
     .hero {
       position: relative;
@@ -999,7 +1010,7 @@
       <img src="https://lh3.googleusercontent.com/d/1j05YEtvKDcs7pX8LBJTiCjk5i3O4bEpz" alt="Recravas" style="height:38px;width:auto;vertical-align:middle;filter:brightness(0) invert(1);">
     </a>
     <div style="display:flex;align-items:center;gap:20px;">
-      <a href="tel:+31645190444" style="color:rgba(255,255,255,0.85);font-size:0.875rem;text-decoration:none;font-weight:500;white-space:nowrap;">+31 6 45 19 04 44</a>
+      <a href="tel:+31645190444" class="nav-phone">+31 6 45 19 04 44</a>
       <a class="nav-cta" href="#aanvragen">Brochure aanvragen</a>
     </div>
   </nav>
@@ -1722,6 +1733,7 @@
       </div>
 
       <p class="cta-microcopy">Geen spam. Geen automatisch bellen. Wij lezen elk bericht persoonlijk.</p>
+      <p class="cta-microcopy" style="margin-top:12px;font-size:0.9rem;color:rgba(255,255,255,0.85);">Liever bellen? <a href="tel:+31645190444" style="color:var(--gold);font-weight:600;text-decoration:none;">+31 6 45 19 04 44</a></p>
     </div>
   </section>
 
