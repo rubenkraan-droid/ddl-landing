@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recravas — Vakantievastgoed in de Dordogne</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #FAF8F4;
+      color: #1A1208;
+      line-height: 1.6;
+    }
+
+    :root {
+      --green: #2D5016;
+      --gold: #C9962A;
+      --cream: #FAF8F4;
+      --text: #1A1208;
+      --lightgreen: #A8C07A;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(45, 80, 22, 0.96);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      color: white;
+      font-size: 1.3rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--text);
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-phone {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.8rem;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 6px;
+      padding: 8px 14px;
+      letter-spacing: 0.01em;
+    }
+    .nav-phone:hover { background: rgba(255,255,255,0.1); }
+    @media (max-width: 640px) {
+      .nav-phone { display: none; }
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: calc(100vh - 200px);
+      min-height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://lh3.googleusercontent.com/d/1r05GNU5voESGtvx4oBCT251Pgmh992f-');
+      background-size: cover;
+      background-position: top center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 24px;
+    }
+
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      color: white;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      color: white;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 36px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-microcopy {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.01em;
+    }
+
+    /* USP STRIP */
+    .usp-strip {
+      background: var(--cream);
+      border-bottom: 1px solid #E5DDD0;
+      padding: 26px 0;
+    }
+
+    .usp-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .usp-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 28px;
+      border-right: 1px solid #DDD6CC;
+    }
+
+    .usp-block:first-child { padding-left: 0; }
+    .usp-block:last-child { border-right: none; }
+
+    .usp-icon { flex-shrink: 0; width: 34px; height: 34px; color: var(--green); }
+
+    .usp-text strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .usp-text span { font-size: 0.78rem; color: #666; }
+
+    /* LAYOUT */
+    .section-white { background: white; }
+    .section-cream { background: var(--cream); }
+    .section-green { background: var(--green); }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 80px 0; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+    .two-col-img { width: 100%; height: 420px; object-fit: cover; border-radius: 12px; }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .section-h2 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--green);
+      line-height: 1.2;
+      margin-bottom: 22px;
+    }
+
+    .section-header-center { text-align: center; margin-bottom: 48px; }
+
+    .body-text p { margin-bottom: 16px; font-size: 0.97rem; color: #444; }
+    .body-text p:last-child { margin-bottom: 0; }
+
+    .accent-line { width: 48px; height: 3px; background: var(--gold); margin-top: 24px; }
+
+    /* Icon bullets */
+    .icon-bullet-list { display: flex; flex-direction: column; gap: 26px; }
+    .icon-bullet { display: flex; gap: 16px; align-items: flex-start; }
+    .icon-bullet-icon { width: 30px; height: 30px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .icon-bullet strong { display: block; font-size: 0.97rem; font-weight: 600; margin-bottom: 3px; }
+    .icon-bullet p { font-size: 0.88rem; color: #555; margin: 0; }
+
+    /* FACILITEITEN */
+    .facilities-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .facility-card {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 32px;
+    }
+
+    .facility-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .facility-card .fc-location {
+      font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .facility-list { list-style: none; }
+
+    .facility-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #E8E0D4;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .facility-list li:last-child { border-bottom: none; }
+
+    .facility-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* WONINGTYPES */
+    .woningtype-section {
+      margin-top: 56px;
+    }
+
+    .woningtype-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .woning-park-block h3 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .woning-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .woning-row {
+      background: white;
+      border-radius: 8px;
+      padding: 14px 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #EDE7DD;
+    }
+
+    .woning-row .woning-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .woning-row .woning-meta {
+      font-size: 0.78rem;
+      color: #777;
+    }
+
+    .woning-row .woning-price {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--green);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .woning-row .woning-pool {
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .woning-row.nieuwbouw {
+      border-left: 3px solid var(--gold);
+    }
+
+    .nieuwbouw-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--text);
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* ZWEMBAD CALLOUT */
+    .pool-callout {
+      background: var(--green);
+      border-radius: 16px;
+      padding: 40px 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 40px;
+      margin-top: 48px;
+    }
+
+    .pool-callout h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .pool-callout p {
+      font-size: 0.9rem;
+      color: var(--lightgreen);
+      margin-bottom: 20px;
+    }
+
+    .pool-options {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .pool-option {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 12px 16px;
+    }
+
+    .pool-option .po-label {
+      font-size: 0.72rem;
+      color: var(--lightgreen);
+      margin-bottom: 2px;
+      font-weight: 500;
+    }
+
+    .pool-option .po-price {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .pool-callout .pool-return {
+      background: var(--gold);
+      border-radius: 12px;
+      padding: 24px 28px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .pool-return .pr-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(26,18,8,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .pool-return .pr-num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .pool-return .pr-sub {
+      font-size: 0.75rem;
+      color: rgba(26,18,8,0.65);
+    }
+
+    /* PARK CARDS */
+    .park-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .park-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    }
+
+    .park-card-img { width: 100%; height: 220px; object-fit: cover; }
+
+    .park-card-body { padding: 28px; }
+
+    .park-card-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .park-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+
+    .park-card ul { list-style: none; margin-bottom: 20px; }
+
+    .park-card ul li {
+      font-size: 0.88rem;
+      padding: 6px 0;
+      border-bottom: 1px solid #F0EBE3;
+      color: #444;
+    }
+
+    .park-card ul li:last-child { border-bottom: none; }
+
+    .badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--text);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-green {
+      display: block;
+      background: var(--green);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    /* STATS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .stat-block .stat-num {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-block .stat-label { font-size: 0.83rem; color: #555; }
+
+    .stats-footnote {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    /* STEPS */
+    .steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .steps-list { display: flex; flex-direction: column; gap: 32px; }
+    .step { display: flex; gap: 20px; }
+
+    .step-num {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 44px;
+    }
+
+    .step strong { display: block; font-size: 0.97rem; font-weight: 600; margin-bottom: 5px; }
+    .step p { font-size: 0.88rem; color: #555; margin: 0; }
+
+    /* TRUST */
+    .trust-paired {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+    .trust-paired-col { display: flex; flex-direction: column; gap: 16px; }
+    .trust-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; }
+    .trust-point { display: flex; flex-direction: column; gap: 8px; }
+    .trust-point-icon { width: 24px; height: 24px; color: var(--green); }
+    .trust-point strong { font-size: 0.9rem; font-weight: 600; }
+    .trust-point p { font-size: 0.83rem; color: #555; margin: 0; }
+
+    .quote-block {
+      background: var(--gold);
+      border-radius: 12px;
+      padding: 32px 40px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .quote-block blockquote {
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 14px;
+      line-height: 1.75;
+    }
+
+    .quote-block cite { font-size: 0.83rem; font-style: normal; font-weight: 600; color: var(--text); }
+
+    /* FAQ */
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    details { border-bottom: 1px solid #E5DDD0; }
+
+    details summary {
+      padding: 18px 0;
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+    }
+
+    details summary::-webkit-details-marker { display: none; }
+
+    details summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-left: 16px;
+      font-weight: 300;
+    }
+
+    details[open] summary::after { content: '−'; }
+
+    details .faq-answer {
+      padding: 0 0 18px;
+      font-size: 0.88rem;
+      color: #555;
+      line-height: 1.75;
+    }
+
+    /* CTA FORM */
+    .cta-section { position: relative; padding: 80px 0; }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://lh3.googleusercontent.com/d/1rts2hWNfNEoVBFCLas0AuDkcnNfny313');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .cta-overlay { position: absolute; inset: 0; background: rgba(45, 80, 22, 0.60); }
+
+    .cta-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .cta-inner h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: white;
+      margin-bottom: 14px;
+    }
+
+    .cta-sub { color: var(--lightgreen); font-size: 0.97rem; margin-bottom: 36px; }
+
+    .form-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+    }
+
+    .form-wrap { width: 100%; }
+    .form-wrap iframe { display: block; height: 700px !important; }
+
+    .cta-microcopy { margin-top: 14px; font-size: 0.78rem; color: rgba(255,255,255,0.65); }
+
+    /* FORM TABS */
+    .form-tabs {
+      display: flex;
+      background: rgba(0,0,0,0.25);
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 24px;
+      gap: 4px;
+    }
+
+    .form-tab {
+      flex: 1;
+      padding: 13px 16px;
+      border: none;
+      border-radius: 7px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      background: transparent;
+      color: rgba(255,255,255,0.55);
+      transition: background 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .form-tab.active {
+      background: var(--green);
+      color: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .form-tab svg { flex-shrink: 0; }
+
+    /* FOOTER */
+    footer { background: var(--text); color: white; padding: 60px 0 0; }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline { font-size: 0.83rem; color: rgba(255,255,255,0.55); font-style: italic; }
+
+    .footer-col h4 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.88rem;
+    }
+
+    .footer-col p { color: rgba(255,255,255,0.75); font-size: 0.88rem; margin-bottom: 8px; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.3);
+      padding: 24px 24px;
+    }
+
+    /* OMGEVING */
+    .parks-distance-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 48px;
+      max-width: 640px;
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 20px 36px;
+      gap: 0;
+    }
+
+    .pdb-park {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .pdb-name { font-weight: 700; font-size: 0.95rem; color: var(--green); }
+    .pdb-region { font-size: 0.75rem; color: #999; }
+
+    .pdb-connector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      padding: 0 20px;
+    }
+
+    .pdb-line { flex: 1; height: 1px; background: var(--gold); }
+
+    .pdb-km {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--gold);
+      white-space: nowrap;
+      background: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1.5px solid var(--gold);
+    }
+
+    .omgeving-paras {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .omgeving-paras p {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.75;
+      margin: 0;
+    }
+    .omgeving-image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .omgeving-col img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+    .omg-feat {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .omg-feat svg { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .omg-feat strong { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 1px; }
+    .omg-feat span { font-size: 0.76rem; color: #666; }
+    @media (max-width: 768px) {
+      .omgeving-paras { grid-template-columns: 1fr; gap: 16px; }
+      .omgeving-image-grid { grid-template-columns: 1fr; }
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 180px;
+      background: #EDE7DD;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #AAA;
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 16px;
+    }
+
+    .photo-placeholder svg { opacity: 0.4; }
+
+    /* FISCAAL */
+    .fiscal-comparison {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 20px;
+      align-items: center;
+      max-width: 760px;
+      margin: 0 auto 28px;
+    }
+
+    .fiscal-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .fiscal-card.fiscal-fr {
+      background: rgba(201,150,42,0.12);
+      border-color: rgba(201,150,42,0.35);
+    }
+
+    .fc-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 10px;
+    }
+
+    .fiscal-fr .fc-label { color: var(--gold); }
+
+    .fc-big {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: rgba(255,255,255,0.4);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .fiscal-fr .fc-big { color: var(--gold); }
+
+    .fc-desc { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-bottom: 12px; line-height: 1.5; }
+    .fiscal-fr .fc-desc { color: rgba(255,255,255,0.75); }
+
+    .fc-note { font-size: 0.76rem; color: rgba(255,255,255,0.35); font-style: italic; line-height: 1.5; }
+    .fiscal-fr .fc-note { color: var(--lightgreen); font-style: normal; font-weight: 500; }
+
+    .fiscal-vs { font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.25); text-align: center; }
+
+    .fiscal-takeaway {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 18px 22px;
+      max-width: 760px;
+      margin: 0 auto 20px;
+    }
+
+    .fiscal-takeaway svg { color: var(--lightgreen); flex-shrink: 0; margin-top: 1px; }
+    .fiscal-takeaway p { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin: 0; line-height: 1.65; }
+    .fiscal-takeaway strong { color: white; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .facilities-grid { grid-template-columns: 1fr; }
+      .woningtype-tabs { grid-template-columns: 1fr; }
+      .pool-callout { grid-template-columns: 1fr; }
+      .pool-callout .pool-return { justify-self: start; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .usp-inner { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .usp-block { padding: 0; border-right: none; }
+      .two-col, .steps-grid { grid-template-columns: 1fr; gap: 32px; }
+      .two-col-img { height: 260px; }
+      .park-cards { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .trust-paired { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .quote-block { padding: 24px; }
+      .pool-callout { padding: 28px 24px; }
+    }
+    /* Advisor section */
+    .advisor-section { background: var(--cream); padding: 72px 0; }
+    .advisor-inner { max-width: 780px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 48px; }
+    .advisor-photo { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 4px solid var(--gold); background: #e8e2d6; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .advisor-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .advisor-photo-placeholder { width: 140px; height: 140px; border-radius: 50%; border: 4px solid var(--gold); background: #d6d0c8; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .advisor-photo-placeholder svg { opacity: 0.45; }
+    .advisor-text h3 { font-size: 1.4rem; color: var(--green); margin-bottom: 6px; }
+    .advisor-text .advisor-role { font-size: 0.88rem; color: var(--gold); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px; }
+    .advisor-text p { font-size: 1rem; color: var(--text); line-height: 1.65; }
+    @media (max-width: 600px) {
+      .advisor-inner { flex-direction: column; text-align: center; }
+    }
+    /* Property photo gallery */
+    .gallery-section { background: var(--text); padding: 72px 0; }
+    .gallery-section .section-eyebrow { color: var(--lightgreen); }
+    .gallery-section .section-h2 { color: white; }
+    .gallery-intro { text-align: center; margin-bottom: 48px; }
+    .gallery-intro p { color: rgba(255,255,255,0.7); max-width: 560px; margin: 12px auto 0; font-size: 0.95rem; line-height: 1.7; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .gallery-item { position: relative; overflow: hidden; border-radius: 8px; aspect-ratio: 4/3; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 14px; background: linear-gradient(to top, rgba(0,0,0,0.72), transparent); color: white; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.03em; }
+    .gallery-rendement { max-width: 900px; margin: 48px auto 0; padding: 0 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .gr-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 24px; text-align: center; }
+    .gr-card .gr-num { font-size: 2rem; font-weight: 700; color: var(--gold); display: block; }
+    .gr-card .gr-label { font-size: 0.82rem; color: rgba(255,255,255,0.65); margin-top: 6px; line-height: 1.5; }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item.tall { aspect-ratio: 4/3; grid-row: span 1; }
+      .gallery-rendement { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .gallery-rendement { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <img src="https://lh3.googleusercontent.com/d/1j05YEtvKDcs7pX8LBJTiCjk5i3O4bEpz" alt="Recravas" style="height:38px;width:auto;vertical-align:middle;filter:brightness(0) invert(1);">
+    </a>
+    <div style="display:flex;align-items:center;gap:20px;">
+      <a href="tel:+31645190444" class="nav-phone nav-bel">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" /></svg>
+        Bel direct
+      </a>
+      <a class="nav-cta" href="#aanvragen" id="nav-brochure" style="display:none;">Brochure aanvragen</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Recravas · Vakantievastgoed in Frankrijk</p>
+      <h1>Frans vakantievastgoed dat zichzelf terugverdient —<br>volledig begeleid, in het Nederlands.</h1>
+      <p class="hero-sub">Door de Franse belastingstructuur heb je tot wel 2% minder rendement nodig om netto hetzelfde te realiseren als een vergelijkbare investering in Nederland.</p>
+      <a href="#aanvragen" class="btn-gold">Ontvang de gratis brochure</a>
+      <p class="hero-microcopy">Geen verplichtingen · Antwoord binnen 24 uur · Nederlandstalig van A tot Z</p>
+    </div>
+  </section>
+
+  <!-- USP STRIP -->
+  <div class="usp-strip">
+    <div class="usp-inner">
+      <div class="usp-block">
+        <svg class="usp-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+        </svg>
+        <div class="usp-text">
+          <strong>Steen of nieuwbouwchalet</strong>
+          <span>Jouw woning, jouw keuze</span>
+        </div>
+      </div>
+      <div class="usp-block">
+        <svg class="usp-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2.25M3 7.5h2.25m-2.25 4.5h2.25M3 16.5h2.25M3 21h2.25M6.75 3h13.5a.75.75 0 0 1 .75.75v16.5a.75.75 0 0 1-.75.75H6.75a.75.75 0 0 1-.75-.75V3.75A.75.75 0 0 1 6.75 3Z" />
+        </svg>
+        <div class="usp-text">
+          <strong>100% Nederlands</strong>
+          <span>Makelaar, beheer, notaris, fiscaal</span>
+        </div>
+      </div>
+      <div class="usp-block">
+        <svg class="usp-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+        </svg>
+        <div class="usp-text">
+          <strong>Eigen grond</strong>
+          <span>Volle eigendom, geen erfpacht</span>
+        </div>
+      </div>
+      <div class="usp-block">
+        <svg class="usp-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+        </svg>
+        <div class="usp-text">
+          <strong>Bewezen verhuur</strong>
+          <span>Via FranceComfort — elk seizoen</span>
+        </div>
+      </div>
+      <div class="usp-block">
+        <svg class="usp-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.05 4.575a1.575 1.575 0 1 0-3.15 0v3m3.15-3v-1.5a1.575 1.575 0 0 1 3.15 0v1.5m-3.15 0 .075 5.925m3.075.75V4.575m0 0a1.575 1.575 0 0 1 3.15 0V15M6.9 7.575a1.575 1.575 0 1 0-3.15 0v8.175a6.75 6.75 0 0 0 6.75 6.75h2.018a5.25 5.25 0 0 0 3.712-1.538l1.732-1.732a5.25 5.25 0 0 0 1.538-3.712l.003-2.024a.668.668 0 0 1 .198-.471 1.575 1.575 0 1 0-2.228-2.228 3.818 3.818 0 0 0-1.12 2.687M6.9 7.575V12m6.27 4.318A4.49 4.49 0 0 1 16.35 15m.002 0h-.002" />
+        </svg>
+        <div class="usp-text">
+          <strong>Begeleiding bij elke stap</strong>
+          <span>Nederlandstalig van A tot Z</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: PROBLEEM -->
+  <section class="section-white section-pad">
+    <div class="container">
+      <div class="two-col">
+        <div class="body-text">
+          <h2 class="section-h2">Spaargeld dat stilstaat, kost je geld</h2>
+          <p>De rente op je spaarrekening dekt de inflatie niet. Box 3 belast je al op wat je hebt — of je nu rendement maakt of niet. En een beleggingsfonds voelt ver van bed: je ziet niets, je voelt niets, en als het tegenvalt ben je handelingsonbekwaam.</p>
+          <p>Misschien heb je al gekeken naar recreatievastgoed in Nederland — logische stap. Maar Nederlands recreatievastgoed omzeilt box 3 niet. In Frankrijk wel: daar wordt alleen de omzet belast, niet het vermogen.</p>
+          <p><strong>Er is een andere manier.</strong></p>
+          <div class="accent-line"></div>
+        </div>
+        <div>
+          <img class="two-col-img" src="https://lh3.googleusercontent.com/d/1qDTa7rxERCXsAOWT_saMAII0JQ93xO6a" alt="Drone overzicht Domaine de Lanzac" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: DE DERDE WEG -->
+  <section class="section-cream section-pad">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <p class="section-eyebrow">De Recravas aanpak</p>
+          <h2 class="section-h2">Recravas: bewezen, beheerd, en van jou</h2>
+          <div class="icon-bullet-list">
+            <div class="icon-bullet">
+              <svg class="icon-bullet-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+              </svg>
+              <div>
+                <strong>Stenen woningen op eigen grond</strong>
+                <p>Echte stenen woningen — traditioneel gebouwd, volledig instapklaar inclusief inventaris. Eigen grond, geen erfpacht. Kleinschalige parken zorgen voor hoge bezetting en veel terugkerend publiek. Wie dat wil, kan ook kiezen voor een nieuwbouwchalet.</p>
+              </div>
+            </div>
+            <div class="icon-bullet">
+              <svg class="icon-bullet-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+              </svg>
+              <div>
+                <strong>Bewezen verhuurcijfers — geen prognoses</strong>
+                <p>Onze parken draaien al jaren op 100% bezetting in het hoogseizoen. De rendementen die we noemen zijn gebaseerd op werkelijke verhuurhistorie via FranceComfort.</p>
+              </div>
+            </div>
+            <div class="icon-bullet">
+              <svg class="icon-bullet-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2.25M3 7.5h2.25m-2.25 4.5h2.25M3 16.5h2.25M3 21h2.25M6.75 3h13.5a.75.75 0 0 1 .75.75v16.5a.75.75 0 0 1-.75.75H6.75a.75.75 0 0 1-.75-.75V3.75A.75.75 0 0 1 6.75 3Z" />
+              </svg>
+              <div>
+                <strong>Alles in het Nederlands — van koop tot beheer</strong>
+                <p>Makelaar, verhuurorganisatie (FranceComfort), notaris, en fiscaal adviseur (RFN accountants) — allemaal Nederlandstalig. Geen taalbarrière, geen verrassingen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img class="two-col-img" src="https://lh3.googleusercontent.com/d/1djQxwSqcoYU31fipAV55wNTBBJ_WtWOE" alt="Persoon op terras, relaxed, zonnig" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WONINGFOTO'S + RENDEMENT -->
+  <section class="gallery-section">
+    <div class="gallery-intro">
+      <p class="section-eyebrow">De woningen</p>
+      <h2 class="section-h2">Stenen woningen — gebouwd om te verhuren</h2>
+      <p>Van geschakelde woning tot vrijstaande villa, voor ieder wat wils. Kleinschalige formule op ieder park: hoog terugkerend publiek, hoge bezetting, jaar na jaar.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://lh3.googleusercontent.com/d/1w3hTM5ZttC-6_xsRR_RUvYPt2dcZHdFf" alt="Villa terras DDL" loading="lazy">
+        <div class="gallery-caption">Villa · Domaine de Lanzac</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://lh3.googleusercontent.com/d/16fy74h1kjID6Qo3rdRDu2N9DxNIRswtw" alt="Papillon terras VDC" loading="lazy">
+        <div class="gallery-caption">Papillon · Village des Cigales</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://lh3.googleusercontent.com/d/1ZvD4pojoE6iY2ASlCp8Lbv9kOcb7ioWQ" alt="Merlot terras DDL" loading="lazy">
+        <div class="gallery-caption">Merlot · Domaine de Lanzac</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://lh3.googleusercontent.com/d/1yZGCg1YIrNftfb_dJ-5PzSuSAYY1uQYA" alt="Syrah terras DDL" loading="lazy">
+        <div class="gallery-caption">Syrah · Domaine de Lanzac</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://lh3.googleusercontent.com/d/1KiPFMphON4RkCY4Dlxsml1chSYVBk2sq" alt="Papillon avondshot VDC" loading="lazy">
+        <div class="gallery-caption">Papillon · Village des Cigales</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://lh3.googleusercontent.com/d/1uAg9o9Xqz7B-kmRB1hFLF1nmV7adL5vx" alt="Carignan voorgevel DDL" loading="lazy">
+        <div class="gallery-caption">Carignan · Domaine de Lanzac</div>
+      </div>
+    </div>
+    <div class="gallery-rendement">
+      <div class="gr-card">
+        <span class="gr-num">5 jaar</span>
+        <span class="gr-label">Gegarandeerd rendement mogelijk — vaste uitkering bij VDC</span>
+      </div>
+      <div class="gr-card">
+        <span class="gr-num">7%</span>
+        <span class="gr-label">Gemiddeld behaald rendement op DDL — op basis van werkelijke verhuurcijfers</span>
+      </div>
+      <div class="gr-card">
+        <span class="gr-num">~100%</span>
+        <span class="gr-label">Bezetting in het hoogseizoen — kleinschalig park, hoog terugkerend publiek</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OMGEVING -->
+  <section class="section-white section-pad">
+    <div class="container">
+      <div class="section-header-center">
+        <p class="section-eyebrow">De regio</p>
+        <h2 class="section-h2">Één van de sterkste toeristische regio's van Frankrijk</h2>
+        <p style="max-width: 620px; margin: 0 auto; font-size: 0.92rem; color: #666; line-height: 1.75;">Beide parken liggen op slechts 80 km van elkaar — in het hart van de Dordogne en Lot-et-Garonne, tientallen jaren lang de favoriete vakantiestreek van Nederland en België.</p>
+      </div>
+
+      <div class="parks-distance-bar">
+        <div class="pdb-park">
+          <span class="pdb-name">Village des Cigales</span>
+          <span class="pdb-region">Lot-et-Garonne</span>
+        </div>
+        <div class="pdb-connector">
+          <div class="pdb-line"></div>
+          <div class="pdb-km">80 km</div>
+          <div class="pdb-line"></div>
+        </div>
+        <div class="pdb-park">
+          <span class="pdb-name">Domaine de Lanzac</span>
+          <span class="pdb-region">Périgord Noir · Dordogne</span>
+        </div>
+      </div>
+
+      <div class="omgeving-paras">
+        <p>Domaine de Lanzac ligt op een heuvel met panoramisch uitzicht, precies tussen <strong>Sarlat</strong> en <strong>Rocamadour</strong> — twee van de meest bezochte plaatsen van Frankrijk. Village des Cigales ligt 80 km westelijker in de glooiende heuvels van Lot-et-Garonne.</p>
+        <p>De Nederlander kent dit gebied goed — het is een van de meest bezochte vakantiebestemmingen van Frankrijk. De vraag naar accommodaties is structureel hoog, niet alleen in de zomer maar ook in voor- en najaar.</p>
+      </div>
+      <div class="omgeving-image-grid">
+        <div class="omgeving-col">
+          <img src="https://lh3.googleusercontent.com/d/1b8mRzjY9kF-94LxdP8hge273EL5PBJhO" alt="Dordogne landschap" loading="lazy" />
+          <div class="omg-feat">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" /></svg>
+            <div><strong>Lang toeristisch seizoen</strong><span>Mei t/m september ideaal · 18–32°C · Buiten zitten van april t/m november</span></div>
+          </div>
+          <div class="omg-feat">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" /></svg>
+            <div><strong>Populair bij Nederlanders &amp; Belgen</strong><span>Vertrouwde bestemming · Nederlandstalig beheer op beide parken</span></div>
+          </div>
+        </div>
+        <div class="omgeving-col">
+          <img src="https://lh3.googleusercontent.com/d/1XJN52DysmBvpAJwn-gdxOOEOCyl200ts" alt="Kanoën op de Dordognerivier" loading="lazy" />
+          <div class="omg-feat">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
+            <div><strong>Sarlat &amp; Rocamadour op korte afstand</strong><span>Twee toeristische toppers — garant voor vraag buiten het hoogseizoen</span></div>
+          </div>
+          <div class="omg-feat">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>
+            <div><strong>Kanoën op de Dordognerivier</strong><span>Op fietsafstand van Lanzac · Gasten van mei t/m september</span></div>
+          </div>
+        </div>
+        <div class="omgeving-col">
+          <img src="https://lh3.googleusercontent.com/d/1qx3UFGq3a3KT6DU32gSm7NPZzZ0OXKd8" alt="Lokale markt Dordogne" loading="lazy" />
+          <div class="omg-feat">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" /></svg>
+            <div><strong>Gastronomie &amp; lokale markten</strong><span>Truffels, ganzenlever, wijnen uit Bergerac en Cahors</span></div>
+          </div>
+          <div class="omg-feat">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" /></svg>
+            <div><strong>Grotten van Lascaux &amp; kastelen</strong><span>UNESCO-erfgoed · Cultureel aanbod trekt ook lente- en herfstbezoekers</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACILITEITEN -->
+  <section class="section-white section-pad">
+    <div class="container">
+      <div class="section-header-center">
+        <p class="section-eyebrow">Op het park</p>
+        <h2 class="section-h2">Alles geregeld. Alles aanwezig.</h2>
+      </div>
+      <div class="facilities-grid">
+        <div class="facility-card">
+          <h3>Village des Cigales</h3>
+          <p class="fc-location">Nabij Mauroux · Lot-et-Garonne</p>
+          <ul class="facility-list">
+            <li>Zwembad met glijbaan en ligstoelen</li>
+            <li>Restaurant Bistro du Parc</li>
+            <li>Bar met terras</li>
+            <li>Snack- en pizza-afhaalservice</li>
+            <li>Speeltuin</li>
+            <li>Receptie</li>
+            <li>Panoramisch uitzicht over de heuvels</li>
+          </ul>
+        </div>
+        <div class="facility-card">
+          <h3>Domaine de Lanzac</h3>
+          <p class="fc-location">Hartje Dordogne · tussen Rocamadour en Sarlat</p>
+          <ul class="facility-list">
+            <li>3 openluchtzwembaden (ca. 340 m²)</li>
+            <li>Restaurant met panoramaterras en lokale kaart</li>
+            <li>Bakkerij — dagelijks vers brood</li>
+            <li>Snackbar</li>
+            <li>Nederlandstalige animatie (hoogseizoen)</li>
+            <li>Tennisbaan, voetbalveld, tafeltennis</li>
+            <li>Speeltuin met airtrampoline</li>
+            <li>Receptie (NL, FR, EN) · Autoluw park</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: KIES JE PARK -->
+  <section class="section-green section-pad">
+    <div class="container">
+      <div class="section-header-center">
+        <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; color: white; margin-bottom: 10px;">Kies het park dat bij jou past</h2>
+        <p style="color: var(--lightgreen); font-size: 0.92rem;">Beide parken, één aanpak. Het verschil zit in de instap en het profiel.</p>
+      </div>
+      <div class="park-cards">
+        <div class="park-card">
+          <img class="park-card-img" src="https://lh3.googleusercontent.com/d/1xTLgucRw75YM3CI-_liwM7vIVP2ps2cR" alt="Village des Cigales — zwembad en faciliteiten" loading="lazy" />
+          <div class="park-card-body">
+            <p class="park-card-eyebrow">Village des Cigales · Lot-et-Garonne</p>
+            <div class="badge">5 jaar gegarandeerd rendement mogelijk</div>
+            <h3>De keuze voor zekerheid</h3>
+            <ul>
+              <li>Instap vanaf <strong>€89.000</strong></li>
+              <li><strong>5 jaar gegarandeerd rendement mogelijk</strong> (min. 5%)</li>
+              <li>Stenen woningen, zwembad met glijbaan + restaurant</li>
+              <li>Parkkosten ca. <strong>€2.300/jaar</strong></li>
+              <li>~25 woningen beschikbaar</li>
+            </ul>
+            <a href="#aanvragen" class="btn-green">Ontvang de VDC brochure</a>
+          </div>
+        </div>
+        <div class="park-card">
+          <img class="park-card-img" src="https://lh3.googleusercontent.com/d/1uAg9o9Xqz7B-kmRB1hFLF1nmV7adL5vx" alt="Domaine de Lanzac — Carignan voorgevel" loading="lazy" />
+          <div class="park-card-body">
+            <p class="park-card-eyebrow">Domaine de Lanzac · Dordogne</p>
+            <div class="badge">Highest rated park</div>
+            <h3>De keuze voor het beste park</h3>
+            <ul>
+              <li>Instap vanaf <strong>€181.500</strong></li>
+              <li>Rendement <strong>4%–7% netto</strong> variabel</li>
+              <li>Zoover <strong>9,5</strong> — hoogst beoordeeld in de regio</li>
+              <li>3 zwembaden, restaurant, bakkerij, animatie</li>
+              <li>~21 woningen beschikbaar</li>
+            </ul>
+            <a href="#aanvragen" class="btn-green">Ontvang de DDL brochure</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WONINGTYPES + ZWEMBAD -->
+  <section class="section-white section-pad">
+    <div class="container">
+      <div class="section-header-center">
+        <p class="section-eyebrow">Woningaanbod</p>
+        <h2 class="section-h2">Van geschakelde woning tot vrijstaande villa — voor ieder wat wils</h2>
+      </div>
+
+      <div class="woningtype-tabs">
+        <!-- VDC -->
+        <div class="woning-park-block">
+          <h3>Village des Cigales</h3>
+          <div class="woning-grid">
+            <div class="woning-row">
+              <div>
+                <div class="woning-name">Chenille</div>
+                <div class="woning-meta">2+2 pers · Geschakeld · <span style="color:#C9962A;font-size:0.78rem;">Pachtgrond</span></div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €89.000</div>
+                <div class="woning-pool">Hottub mogelijk</div>
+              </div>
+            </div>
+            <div class="woning-row">
+              <div>
+                <div class="woning-name">Cigales</div>
+                <div class="woning-meta">4/6 pers · Vrijstaand</div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €149.000</div>
+                <div class="woning-pool">Hottub mogelijk</div>
+              </div>
+            </div>
+            <div class="woning-row">
+              <div>
+                <div class="woning-name">Libelle</div>
+                <div class="woning-meta">4+2/6 pers · Vrijstaand</div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €159.000</div>
+                <div class="woning-pool">Hottub mogelijk</div>
+              </div>
+            </div>
+            <div class="woning-row nieuwbouw">
+              <div>
+                <div class="woning-name">Papillon <span class="nieuwbouw-badge">Nieuwbouw</span></div>
+                <div class="woning-meta">4 pers · Vrijstaand</div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €189.000</div>
+                <div class="woning-pool">Hottub mogelijk</div>
+              </div>
+            </div>
+            <div class="woning-row nieuwbouw">
+              <div>
+                <div class="woning-name">Cigales <span class="nieuwbouw-badge">Nieuwbouw</span></div>
+                <div class="woning-meta">6 pers · Vrijstaand</div>
+              </div>
+              <div>
+                <div class="woning-price">€229.000</div>
+                <div class="woning-pool">Hottub mogelijk</div>
+              </div>
+            </div>
+            <div class="woning-row nieuwbouw">
+              <div>
+                <div class="woning-name">Bourdon / Abeille <span class="nieuwbouw-badge">Nieuwbouw</span></div>
+                <div class="woning-meta">4 of 6 pers · Geschakeld chalet</div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €169.000</div>
+                <div class="woning-pool">Excl. BTW · Hottub mogelijk</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DDL -->
+        <div class="woning-park-block">
+          <h3>Domaine de Lanzac</h3>
+          <div class="woning-grid">
+            <div class="woning-row">
+              <div>
+                <div class="woning-name">Merlot</div>
+                <div class="woning-meta">4/6 pers · Geschakeld</div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €181.500</div>
+                <div class="woning-pool">Hottub mogelijk</div>
+              </div>
+            </div>
+            <div class="woning-row">
+              <div>
+                <div class="woning-name">Syrah</div>
+                <div class="woning-meta">6 pers · Geschakeld</div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €213.000</div>
+                <div class="woning-pool">Hottub mogelijk</div>
+              </div>
+            </div>
+            <div class="woning-row">
+              <div>
+                <div class="woning-name">Carignan</div>
+                <div class="woning-meta">4 pers · Geschakeld</div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €185.000</div>
+                <div class="woning-pool">Hottub mogelijk</div>
+              </div>
+            </div>
+            <div class="woning-row">
+              <div>
+                <div class="woning-name">Cinsault</div>
+                <div class="woning-meta">8 pers · Geschakeld</div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €218.500</div>
+                <div class="woning-pool">Hottub mogelijk</div>
+              </div>
+            </div>
+            <div class="woning-row">
+              <div>
+                <div class="woning-name">Bungalow</div>
+                <div class="woning-meta">4 pers · Vrijstaand</div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €181.500</div>
+                <div class="woning-pool">Zwembad mogelijk</div>
+              </div>
+            </div>
+            <div class="woning-row">
+              <div>
+                <div class="woning-name">Villa</div>
+                <div class="woning-meta">8 pers · Vrijstaand</div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €289.000</div>
+                <div class="woning-pool" style="color: #2D5016; font-weight: 600;">Zwembad 6×3 inclusief</div>
+              </div>
+            </div>
+            <div class="woning-row nieuwbouw">
+              <div>
+                <div class="woning-name">Bungalow <span class="nieuwbouw-badge">Nieuwbouw</span></div>
+                <div class="woning-meta">6/8 pers · Geschakeld</div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €241.000</div>
+                <div class="woning-pool">Zwembad of hottub mogelijk</div>
+              </div>
+            </div>
+            <div class="woning-row nieuwbouw">
+              <div>
+                <div class="woning-name">Villa <span class="nieuwbouw-badge">Nieuwbouw</span></div>
+                <div class="woning-meta">6/8+ pers · Geschakeld</div>
+              </div>
+              <div>
+                <div class="woning-price">Vanaf €355.000</div>
+                <div class="woning-pool">Zwembad of hottub mogelijk</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZWEMBAD CALLOUT -->
+      <div class="pool-callout">
+        <div>
+          <h3>Privézwembad of hottub toevoegen</h3>
+          <p>Bij de meeste woningtypes is een privézwembad of hottub mogelijk — hogere gastervaring, hogere huurprijs en hogere bezettingsgraad, bewezen via FranceComfort-data.</p>
+          <div class="pool-options">
+            <div class="pool-option">
+              <div class="po-label">Hottub (incl. fundering + aansluiting)</div>
+              <div class="po-price">€ 9.500</div>
+            </div>
+            <div class="pool-option">
+              <div class="po-label">Privézwembad 6×3 + travertin terras (DDL)</div>
+              <div class="po-price">€ 50.000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: RENDEMENT IN CIJFERS -->
+  <section class="section-cream section-pad">
+    <div class="container">
+      <div class="section-header-center">
+        <h2 class="section-h2">Wat betekent dit concreet voor jou?</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-block">
+          <span class="stat-num">5 jr</span>
+          <span class="stat-label">Gegarandeerd rendement mogelijk (VDC)</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-num">9,5</span>
+          <span class="stat-label">Zoover-score Domaine de Lanzac</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Tot wel 100% bezetting hoogseizoen</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-num">A–Z</span>
+          <span class="stat-label">Ontzorgd traject — Nederlandstalig</span>
+        </div>
+      </div>
+      <p class="stats-footnote">Rendementscijfers zijn gebaseerd op werkelijke verhuurhistorie via FranceComfort. Parkkosten, commissie en bezettingsprognoses worden volledig uitgelegd in het informatiedossier.</p>
+    </div>
+  </section>
+
+  <!-- FISCAAL VOORDEEL -->
+  <section class="section-green section-pad">
+    <div class="container">
+      <div class="section-header-center">
+        <p class="section-eyebrow" style="color: var(--lightgreen);">Fiscaal voordeel</p>
+        <h2 style="font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 700; letter-spacing: -0.02em; color: white; margin-bottom: 14px;">Frans vastgoed — buiten de Nederlandse vermogensheffing</h2>
+        <p style="color: var(--lightgreen); font-size: 0.92rem; max-width: 580px; margin: 0 auto; line-height: 1.7;">In Frankrijk wordt alleen de omzet belast — niet het vermogen zelf. Daardoor wordt het ingelegde kapitaal niet onderworpen aan de Nederlandse box 3 vermogensbelasting.</p>
+      </div>
+
+      <div class="fiscal-comparison">
+        <div class="fiscal-card fiscal-nl">
+          <div class="fc-label">Nederlandse belegging</div>
+          <div class="fc-big">36%</div>
+          <div class="fc-desc">belasting over rendement (box 3, 2025+)</div>
+          <div class="fc-note">Vermogen wordt jaarlijks belast — ook als het niet rendeert</div>
+        </div>
+        <div class="fiscal-vs">vs</div>
+        <div class="fiscal-card fiscal-fr">
+          <div class="fc-label">Frans vakantievastgoed</div>
+          <div class="fc-big">~8%</div>
+          <div class="fc-desc">belasting over omzet in Frankrijk</div>
+          <div class="fc-note">Het ingelegde vermogen zelf wordt níet aan Nederlandse box 3 onderworpen</div>
+        </div>
+      </div>
+
+      <div class="fiscal-takeaway">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" /></svg>
+        <p>Vuistregel: <strong>70% van je Nederlandse rendement behalen in Frankrijk = netto hetzelfde</strong> — plus een verwachte waardestijging van ~2% per jaar bovenop. Nederlandstalige fiscale begeleiding via RFN accountants is inbegrepen in de koopbegeleiding (jaar 1).</p>
+      </div>
+
+      <p style="text-align:center; font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 8px;">Dit is geen belastingadvies. Individuele situaties kunnen afwijken.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 7: VERTROUWEN -->
+  <section class="section-cream section-pad">
+    <div class="container">
+      <div class="section-header-center">
+        <h2 class="section-h2">Bewezen parken. Geen nieuw concept.</h2>
+      </div>
+      <div class="trust-paired">
+        <div class="trust-paired-col">
+          <img class="trust-photo" src="https://lh3.googleusercontent.com/d/16mYJLCsB6UooSGwT3Ilgc2oaOTqTmFy1" alt="Zwembad Village des Cigales" loading="lazy" />
+          <div class="trust-point">
+            <svg class="trust-point-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+            </svg>
+            <strong>FranceComfort verhuurpartner</strong>
+            <p>Beide parken worden verhuurd via FranceComfort, een van de grootste Nederlandse verhuurorganisaties voor Franse vakantiewoningen.</p>
+          </div>
+        </div>
+        <div class="trust-paired-col">
+          <img class="trust-photo" src="https://lh3.googleusercontent.com/d/1n0gNE8Dt2pnDa5R2eKviUmLl0JQL1Dbr" alt="Zwembad Domaine de Lanzac" loading="lazy" />
+          <div class="trust-point">
+            <svg class="trust-point-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+            </svg>
+            <strong>Zoover-gecertificeerd</strong>
+            <p>Domaine de Lanzac scoort een 9,5 op Zoover — de hoogste score in de Dordogne. Geverifieerd door echte gasten, elk seizoen opnieuw.</p>
+          </div>
+        </div>
+        <div class="trust-paired-col">
+          <img class="trust-photo" src="https://lh3.googleusercontent.com/d/11m4VN-JzaLwnb5mfmWGxanm91Fd0eQBd" alt="Sfeer op het park" loading="lazy" />
+          <div class="trust-point">
+            <svg class="trust-point-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+            </svg>
+            <strong>Eigen grond</strong>
+            <p>Je koopt geen timeshare of erfpacht. Volle eigendom. Traditioneel gebouwd in steen. Overdraagbaar.</p>
+          </div>
+        </div>
+      </div>
+      <div class="quote-block">
+        <blockquote>"Onze eerste investering in het buitenland voelde wat spannend. Echter is letterlijk alles in het Nederlands — het enige ingrijpende verschil met Nederland is dat de belasting veel lager en de temperatuur veel hoger is."</blockquote>
+        <cite>— Investeerdersechtpaar, Utrecht <span style="font-weight:400; font-style:italic;">(naam geanonimiseerd)</span></cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: FAQ -->
+  <section class="section-white section-pad">
+    <div class="container">
+      <div class="section-header-center">
+        <h2 class="section-h2">Veelgestelde vragen</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Is dit beschikbaar voor Belgische investeerders?</summary>
+          <div class="faq-answer">Ja. We begeleiden ook Belgische kopers, inclusief coördinatie met een Belgische notaris indien gewenst.</div>
+        </details>
+        <details>
+          <summary>Moet ik zelf iets regelen voor de verhuur?</summary>
+          <div class="faq-answer">Nee. FranceComfort regelt de volledige verhuur: gastwerving, check-in/out, schoonmaak en onderhoud. Jij ontvangt elk jaar een afrekening.</div>
+        </details>
+        <details>
+          <summary>Kan ik de woning ook zelf gebruiken?</summary>
+          <div class="faq-answer">Ja. Eigen gebruik plan je gewoon in en kost je enkel de verbruikskosten (water, elektra). Het wordt niet verrekend in de huurafrekening. Details staan in de brochure.</div>
+        </details>
+        <details>
+          <summary>Betaal ik belasting in box 3?</summary>
+          <div class="faq-answer">Nee. Frans vastgoed valt qua afrekening buiten de Nederlandse box 3-heffing. De belasting vindt plaats in Frankrijk (bronbelasting over de omzet, ca. 8%) — niet over het vermogen. Je betaalt dus geen box 3-belasting over het ingelegde kapitaal. Fiscaal advies is inbegrepen in de koopbegeleiding (RFN accountants, jaar 1). Dit is geen belastingadvies.</div>
+        </details>
+        <details>
+          <summary>Wat kost het informatiedossier?</summary>
+          <div class="faq-answer">Niets. Het is gratis en vrijblijvend. Je ontvangt het binnen 24 uur na aanvraag.</div>
+        </details>
+        <details>
+          <summary>Kan ik een privézwembad of hottub laten plaatsen?</summary>
+          <div class="faq-answer">Ja. Bij de meeste woningtypes op beide parken is een hottub (€ 9.500 incl. fundering en aansluiting) mogelijk. Bij Domaine de Lanzac is voor bepaalde types ook een privézwembad 6×3 mogelijk (stelpost € 50.000, inclusief travertin terras). Beide opties verhogen de gastervaring, de huurprijs en de bezettingsgraad — de exacte impact staat in de brochure.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVISOR -->
+  <section class="advisor-section">
+    <div class="advisor-inner">
+      <div class="advisor-photo">
+        <img src="https://lh3.googleusercontent.com/d/1P-KM98TM7JokR6LgIQV-3yImuT6X3FZo" alt="Willem — makelaar Recravas">
+      </div>
+      <div class="advisor-text">
+        <h3>Willem</h3>
+        <p class="advisor-role">Makelaar bij Recravas</p>
+        <p>Heb je vragen over de parken, de financiering of het aankoopproces? Willem helpt je graag verder — geheel vrijblijvend, volledig in het Nederlands.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + GESPREK — TABBED -->
+  <section class="cta-section" id="aanvragen">
+    <div class="cta-bg"></div>
+    <div class="cta-overlay"></div>
+    <div class="cta-inner">
+      <h2>Zet vandaag de eerste stap</h2>
+      <p class="cta-sub">Ontvang de gratis brochure van het park van jouw keuze — of plan direct een vrijblijvend gesprek met één van onze adviseurs.</p>
+
+      <div class="form-tabs">
+        <button class="form-tab active" onclick="switchTab('brochure', this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+          Brochure ontvangen
+        </button>
+        <button class="form-tab" onclick="switchTab('gesprek', this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" /></svg>
+          Gratis gesprek plannen
+        </button>
+      </div>
+
+      <div class="form-card">
+        <div id="tab-brochure" class="form-wrap">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/aFXlG0bQlgQgtGqAEGaE"
+            style="width:100%;height:611px;border:none;border-radius:8px"
+            title="Recravas - Brochure - French Dream">
+          </iframe>
+        </div>
+        <div id="tab-gesprek" class="form-wrap" style="display:none;">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/9S8b3B7tMQGvzyGiDTTq"
+            style="width:100%;height:611px;border:none;border-radius:8px"
+            title="Recravas - Gesprek - French Dream">
+          </iframe>
+        </div>
+      </div>
+
+      <p class="cta-microcopy">Geen spam. Geen automatisch bellen. Wij lezen elk bericht persoonlijk.</p>
+      <p class="cta-microcopy" style="margin-top:12px;font-size:0.9rem;color:rgba(255,255,255,0.85);">Liever bellen? <a href="tel:+31645190444" style="color:var(--gold);font-weight:600;text-decoration:none;">+31 6 45 19 04 44</a></p>
+    </div>
+  </section>
+
+  <script>
+    function switchTab(tab, btn) {
+      document.querySelectorAll('.form-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-brochure').style.display = tab === 'brochure' ? 'block' : 'none';
+      document.getElementById('tab-gesprek').style.display  = tab === 'gesprek'  ? 'block' : 'none';
+    }
+  </script>
+  <script>
+    (function() {
+      var heroCta = document.querySelector('.btn-gold');
+      var navCta  = document.getElementById('nav-brochure');
+      var observer = new IntersectionObserver(function(entries) {
+        navCta.style.display = entries[0].isIntersecting ? 'none' : 'inline-block';
+      }, { threshold: 0 });
+      if (heroCta) observer.observe(heroCta);
+    })();
+  </script>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <img src="https://lh3.googleusercontent.com/d/1j05YEtvKDcs7pX8LBJTiCjk5i3O4bEpz" alt="Recravas" style="height:36px;width:auto;filter:brightness(0) invert(1);">
+        </div>
+        <p class="footer-tagline">Vakantievastgoed in de Dordogne</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigatie</h4>
+        <ul>
+          <li><a href="#">Domaine de Lanzac</a></li>
+          <li><a href="#">Village des Cigales</a></li>
+          <li><a href="#aanvragen">Informatiedossier aanvragen</a></li>
+          <li><a href="#gesprek">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Recravas Makelaars</p>
+        <p>info@recravas.nl</p>
+        <p><a href="tel:+31645190444" style="color:rgba(255,255,255,0.75);text-decoration:none;">+31 6 45 19 04 44</a></p>
+        <p>KvK: [invullen]</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Recravas &mdash; KVK 82765952 &mdash; Alle rendementen zijn gebaseerd op historische verhuurdata en vormen geen garantie voor toekomstige opbrengsten, tenzij expliciet schriftelijk overeengekomen.
+    </div>
+  </footer>
+
+
+</body>
+</html>
